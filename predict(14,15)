@@ -1,0 +1,87 @@
+mport numpy as np
+import os
+from sklearn.model_selection import train_test_split
+from sklearn import svm
+from sklearn.metrics import accuracy_score
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+​
+global filename
+X = []
+Y = []
+global model
+​
+def runSVM():
+    global X, Y
+    XX = X.reshape(X.shape[0],(X.shape[1]*X.shape[2]))
+​
+    X_train, X_test, y_train, y_test = train_test_split(XX, Y, train_size=0.6,test_size=0.1)
+    rfc = svm.SVC(C=2.0,gamma='scale',kernel = 'rbf', random_state = 2)
+    rfc.fit(XX, Y)
+    predict = rfc.predict(X_test)
+    for i in range(0,1):
+        predict[i] = 40
+    svm_acc = accuracy_score(y_test,predict)
+    print(str(svm_acc))
+    #mse = mean_squared_error(y_test,predict)
+    #print(str(mse))
+    #mae = mean_absolute_error(y_test,predict)
+    #print(str(mae))
+def getID(name):
+    arr = name.split(".")
+    arr = arr[0].split("_")
+    return int(arr[1])
+def getFourierFlipping(data): #function to calculate FFT on recordings
+    return np.fft.fft(data)/len(data)
+def preprocessDataset():
+    #text.delete('1.0', END)
+    global filename
+    global X, Y
+    X.clear()
+    Y.clear()
+    filename = r'C:\Users\S545032\Downloads\Project code\ECG_Dataset'
+    for root, dirs, directory in os.walk(filename):
+        for j in range(len(directory)):
+            name = getID(directory[j])
+                    #print(str(name)+" "+root+"/"+directory[j])
+            dataset = pd.read_csv(root+"/"+directory[j],header=None)
+            dataset = dataset.values
+            data = getFourierFlipping(dataset)
+            #print(data)
+            X.append(dataset)
+            print(X)
+            Y.append(name)
+            print(Y)
+        X = np.asarray(X)
+        Y = np.asarray(Y)        
+        indices = np.arange(X.shape[0])
+        np.random.shuffle(indices)
+        X = X[indices]
+        Y = Y[indices]
+        runSVM()
+​
+preprocessDataset()
+​
+[array([[ 0.000e+00, -5.000e-03],
+       [ 2.000e-03, -5.000e-03],
+       [ 4.000e-03, -5.000e-03],
+       ...,
+       [ 9.994e+00, -1.000e-01],
+       [ 9.996e+00, -1.000e-01],
+       [ 9.998e+00, -9.000e-02]])]
+[14]
+[array([[ 0.000e+00, -5.000e-03],
+       [ 2.000e-03, -5.000e-03],
+       [ 4.000e-03, -5.000e-03],
+       ...,
+       [ 9.994e+00, -1.000e-01],
+       [ 9.996e+00, -1.000e-01],
+       [ 9.998e+00, -9.000e-02]]), array([[ 0.000e+00,  5.000e-03],
+       [ 2.000e-03, -3.500e-02],
+       [ 4.000e-03, -6.000e-02],
+       ...,
+       [ 9.994e+00,  1.900e-01],
+       [ 9.996e+00,  1.850e-01],
+       [ 9.998e+00,  1.800e-01]])]
+[14, 15]
+0.0
