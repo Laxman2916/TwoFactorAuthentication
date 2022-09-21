@@ -127,7 +127,7 @@ def predict():
     
 font = ('times', 16, 'bold')
 title = Label(main, text='Heartbeat Authentication')
-title.config(bg='#72e64c', fg='#e01f4a')  
+title.config(bg='#6f98e7', fg='0B0B00')  
 title.config(font=font)           
 title.config(height=3, width=120)       
 title.place(x=0,y=5)
@@ -161,5 +161,5 @@ authButton = Button(main, text="Upload ECG Test Data & Authenticate User", comma
 authButton.place(x=500,y=600)
 authButton.config(font=font1) 
 
-main.config(bg='#b9f3a5')
+main.config(bg='#FFFF33')
 main.mainloop()
