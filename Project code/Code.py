@@ -127,7 +127,7 @@ def predict():
     
 font = ('times', 16, 'bold')
 title = Label(main, text='Heartbeat Authentication')
-title.config(bg='#6f98e7', fg='0B0B00')  
+title.config(bg='#6f98e7', fg='#0B0B00')  
 title.config(font=font)           
 title.config(height=3, width=120)       
 title.place(x=0,y=5)
