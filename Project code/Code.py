@@ -161,5 +161,5 @@ authButton = Button(main, text="Upload ECG Test Data & Authenticate User", comma
 authButton.place(x=500,y=600)
 authButton.config(font=font1) 
 
-main.config(bg='#FFFF33')
+main.config(bg='#EABCEA')
 main.mainloop()
