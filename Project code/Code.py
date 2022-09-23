@@ -157,8 +157,8 @@ dtButton = Button(main, text="Train Decision Tree Algorithm", command=runDT, bg=
 dtButton.place(x=720,y=550)
 dtButton.config(font=font1)
 
-authButton = Button(main, text="Upload ECG Test Data & Authenticate User", command=predict, bg='#6f98e7')
-authButton.place(x=500,y=600)
+authButton = Button(main, text="Authenticate User", command=predict, bg='#6f98e7')
+authButton.place(x=50,y=600)
 authButton.config(font=font1) 
 
 main.config(bg='#EABCEA')
