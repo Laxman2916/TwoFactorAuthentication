@@ -1,0 +1,14 @@
+1) Reference code: https://www.statology.org/pandas-train-test/
+
+
+2) Difference between reference code and project code:
+
+* The code uses both train_size and test_size meaning they define the amount of data which is given to train and test. The accuracy for this 
+code increases when we increase the size of training data but for our code this logic works in reverse way which we concluded after testing the data with
+different sizes of training data. 
+
+* We use only train size for code meaning, if we declare the size of training data as 50% then it automatically takes the
+size of testing data as the other half 50%. 
+
+
+3) Authentication:

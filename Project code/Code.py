@@ -18,7 +18,7 @@ from sklearn.metrics import mean_squared_error
 
 
 main = tkinter.Tk()
-main.title("Heartbeat Authentication") #designing main screen
+main.title("Heartbeat Authentication") 
 main.geometry("1366x768")
 
 global filename
@@ -75,7 +75,7 @@ def runSVM():
     global X, Y
     XX = X.reshape(X.shape[0],(X.shape[1]*X.shape[2]))
 
-    X_train, X_test, y_train, y_test = train_test_split(XX, Y, test_size=0.5,random_state=2)
+    X_train, X_test, y_train, y_test = train_test_split(XX, Y, train_size=0.5,random_state=2)
     rfc = svm.SVC(C=2.0,gamma='scale',kernel = 'rbf', random_state = 2)
     rfc.fit(XX, Y)
     predict = rfc.predict(X_test)
@@ -93,7 +93,7 @@ def runDT():
     global model
     global X, Y
     XX = X.reshape(X.shape[0],(X.shape[1]*X.shape[2]))
-    X_train, X_test, y_train, y_test = train_test_split(XX, Y, train_size=0.6)
+    X_train, X_test, y_train, y_test = train_test_split(XX, Y, train_size=0.6, random_state =3)
     rfc = DecisionTreeClassifier()
     rfc.fit(XX, Y)
     model = rfc
